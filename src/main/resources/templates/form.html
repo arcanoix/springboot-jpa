@@ -37,29 +37,42 @@
 			class="text-primary border border-success border-top-0 border-left-0 border-right-0"></h1>
 
 		<form th:action="@{/form}" th:object="${cliente}" method="post">
-			<table>
 
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" >Nombre</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{nombre}" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				</div>
+			</div>
 
-				<tr>
-					<td>Nombre</td>
-					<td><input type="text" class="form-control"
-						th:field="*{nombre}" /></td>
-				</tr>
-				<tr>
-					<td>Apellido</td>
-					<td><input type="text" class="form-control"
-						th:field="*{apellido}" /></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><input type="email" class="form-control"
-						th:field="*{email}" /></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="crear cliente" class="btn btn-primary" /></td>
-					<input type="hidden" th:field="*{id}" />
-				</tr>
-			</table>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Apellido</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{apellido}"  th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" >Email</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" th:field="*{email}" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" >Fecha</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" th:field="*{createAt}" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" value="crear cliente" class="btn btn-primary" />
+				<input type="hidden" th:field="*{id}" />
+			</div>
 		</form>
 	</div>
 

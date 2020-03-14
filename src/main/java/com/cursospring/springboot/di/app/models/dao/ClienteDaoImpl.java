@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cursospring.springboot.di.app.models.entity.Cliente;
 
@@ -18,7 +19,7 @@ public class ClienteDaoImpl implements IClienteDao {
 	private EntityManager em;
 	
 	@SuppressWarnings("unchecked")
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public List<Cliente> findAll() {
 		// TODO Auto-generated method stub
