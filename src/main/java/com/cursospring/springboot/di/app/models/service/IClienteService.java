@@ -1,12 +1,12 @@
-package com.cursospring.springboot.di.app.models.dao;
+package com.cursospring.springboot.di.app.models.service;
 
 import java.util.List;
 
 import com.cursospring.springboot.di.app.models.entity.Cliente;
 
-public interface IClienteDao {
+public interface IClienteService {
 	
-	public List<Cliente> findAll();
+public List<Cliente> findAll();
 	
 	public void save(Cliente cliente);
 	
