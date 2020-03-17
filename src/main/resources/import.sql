@@ -1,2 +1,10 @@
-INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (1, 'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
-INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (2, 'dairy', 'sanabria', 'dairysanabria.90@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (1,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (2,'dairy', 'sanabria', 'dairysanabria.90@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (3,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (4,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (5,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (6,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (7,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (8,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (9,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES (10,'gustavo', 'herrera', 'gustavoh.2312@gmail.com', '2020-03-13');
