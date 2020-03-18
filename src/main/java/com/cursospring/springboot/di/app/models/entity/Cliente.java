@@ -36,6 +36,18 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	@Email
 	private String email;
+	
+	
+	
+	private String foto;
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	@NotNull
 	@Column(name = "create_at")
