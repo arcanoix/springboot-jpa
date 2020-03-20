@@ -125,6 +125,10 @@ public class Cliente implements Serializable {
 	public void addFactura(Factura factura) {
 		facturas.add(factura);
 	}
+	
+	public String getNombreCompleto() {
+		return apellido.toString() + " " + nombre.toString();
+	}
 
 	private static final long serialVersionUID = 2269077053410969790L;
 

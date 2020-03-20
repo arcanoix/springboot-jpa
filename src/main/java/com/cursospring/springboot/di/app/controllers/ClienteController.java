@@ -1,6 +1,6 @@
 package com.cursospring.springboot.di.app.controllers;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -171,7 +171,8 @@ public class ClienteController {
 	@GetMapping(value = "/ver/{id}")
 	public String ver(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
-		Cliente cliente = clienteService.findOne(id);
+		//Cliente cliente = clienteService.findOne(id);
+		Cliente cliente = clienteService.fetchByIdWithFacturas(id);
 
 		if (cliente == null) {
 			flash.addAttribute("error", "El cliente no exite en la base de datos");
