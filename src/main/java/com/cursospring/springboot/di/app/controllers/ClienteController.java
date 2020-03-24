@@ -177,7 +177,7 @@ public class ClienteController {
 		return "redirect:listar";
 	}
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER)")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	@GetMapping("/form/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 		Cliente cliente = null;

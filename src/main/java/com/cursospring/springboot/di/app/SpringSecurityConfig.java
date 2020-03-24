@@ -1,7 +1,9 @@
 package com.cursospring.springboot.di.app;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,14 +20,14 @@ import com.cursospring.springboot.di.app.auth.handler.LoginSuccessHandler;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+	@Autowired
+	DataSource dataSource;
 	
 	@Autowired
 	private LoginSuccessHandler successHandler;
-	
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	
 	@Override
@@ -54,7 +56,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
 		
-		PasswordEncoder encoder = passwordEncoder();
+		builder
+			.jdbcAuthentication()
+			.dataSource(dataSource)
+			.passwordEncoder(passwordEncoder)
+			.usersByUsernameQuery("select username, password, enabled from users where username =?")
+			.authoritiesByUsernameQuery(" select u.username, a.authority from authorities a inner join users u on (a.user_id = u.id) where u.username=?")
+			;
+		/*PasswordEncoder encoder = passwordEncoder;
 		//UserBuilder users = User.builder().passwordEncoder(password -> encoder.encode(password));
 		// o puede ser asi
 		UserBuilder users = User.builder().passwordEncoder(encoder::encode);
@@ -63,6 +72,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			.withUser(users.username("admin").password("12345").roles("ADMIN","USER"))
 			.withUser(users.username("gustavo").password("12345").roles("USER"))
 			;
+		*/
+		
 		
 	}
 	
