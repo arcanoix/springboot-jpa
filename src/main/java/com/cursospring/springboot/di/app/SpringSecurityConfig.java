@@ -9,12 +9,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.cursospring.springboot.di.app.auth.handler.LoginSuccessHandler;
+import com.cursospring.springboot.di.app.models.service.JpaUserDetailsService;
 
 @EnableGlobalMethodSecurity(securedEnabled=true, prePostEnabled=true)
 @Configuration
@@ -28,6 +29,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JpaUserDetailsService userDetailsService;
 	
 	
 	@Override
@@ -56,13 +60,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
 		
-		builder
+		/*builder
 			.jdbcAuthentication()
 			.dataSource(dataSource)
 			.passwordEncoder(passwordEncoder)
 			.usersByUsernameQuery("select username, password, enabled from users where username =?")
 			.authoritiesByUsernameQuery(" select u.username, a.authority from authorities a inner join users u on (a.user_id = u.id) where u.username=?")
-			;
+			;*/
 		/*PasswordEncoder encoder = passwordEncoder;
 		//UserBuilder users = User.builder().passwordEncoder(password -> encoder.encode(password));
 		// o puede ser asi
@@ -73,6 +77,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			.withUser(users.username("gustavo").password("12345").roles("USER"))
 			;
 		*/
+		
+		builder.userDetailsService(userDetailsService)
+		.passwordEncoder(passwordEncoder);
 		
 		
 	}
