@@ -28,7 +28,7 @@
 					<a class="nav-link" th:href="@{/listar}">Clientes</a>
 					</li>
 				</ul>
-				<ul class="navbar-nav float-right">
+				<ul class="navbar-nav navbar-right">
 					<li sec:authorize="!isAuthenticated()">
 					<a th:href="@{/login}" class="btn btn-primary">Login</a></li>
 						
@@ -45,6 +45,25 @@
 								<button class="dropdown-item" type="submit" onclick="document.getElementById('logoutForm').submit();">Cerrar session</button>	
 							</form>
 							
+						</div>
+					</li>
+				</ul>
+				<ul class="navbar-nav navbar-right mx-4">
+					<li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=es_ES)}">ES</a></li>
+					<li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=en_EN)}">EN</a></li>
+					<li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=de_DE)}">DE</a></li>
+					
+					<li class="nav-item dropdown show mx-2">
+						<a class="btn btn-primary-outline dropdown-toggle" href="#"
+							role="button" id="dropdownLenguaje" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							<span th:text="#{text.locale.language}"></span>
+							
+						</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/locale(lang=es_ES)}" th:text="#{text.locale.es}">ES</a>
+							<a class="dropdown-item" th:href="@{/locale(lang=en_EN)}" th:text="#{text.locale.en}">EN</a>
+							<a class="dropdown-item" th:href="@{/locale(lang=de_DE)}" th:text="#{text.locale.de}">DE</a>
 						</div>
 					</li>
 				</ul>

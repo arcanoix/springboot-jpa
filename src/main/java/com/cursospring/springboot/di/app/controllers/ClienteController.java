@@ -4,6 +4,7 @@ package com.cursospring.springboot.di.app.controllers;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.core.io.Resource;
 
 import org.springframework.data.domain.Page;
@@ -53,6 +55,9 @@ public class ClienteController {
 	protected final Log logger = LogFactory.getLog(this.getClass());
 
 	@Autowired
+	private MessageSource messageSource;
+	
+	@Autowired
 	private IClienteService clienteService;
 
 	@Autowired
@@ -80,7 +85,8 @@ public class ClienteController {
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page,
 			Model model,
 			Authentication authentication, 
-			HttpServletRequest request) {
+			HttpServletRequest request,
+			Locale locale) {
 		
 
 		if(authentication != null) {
@@ -119,7 +125,7 @@ public class ClienteController {
 
 		PageRender<Cliente> pageRender = new PageRender<>("/listar", clientes);
 
-		model.addAttribute("titulo", "listado de clientes");
+		model.addAttribute("titulo", messageSource.getMessage("text.cliente.listar.titulo", null, locale));
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
 		return "listar";
